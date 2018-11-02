@@ -7,15 +7,25 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 
 class TransactionController extends Controller {
-    public function index() {
-        return DB::select('
-            SELECT _type, id, happened_on, description
+    public function index(Request $request) {
+        $query = '
+            SELECT _type, id, happened_on, description, amount
             FROM (
-                SELECT "earning" AS _type, id, happened_on, description FROM earnings
+                SELECT "earning" AS _type, id, happened_on, description, amount FROM earnings
                 UNION ALL
-                SELECT "spending" AS _type, id, happened_on, description FROM spendings
+                SELECT "spending" AS _type, id, happened_on, description, amount FROM spendings
             ) a
-            ORDER BY happened_on DESC;
-        ');
+            ORDER BY happened_on DESC
+        ';
+
+        // Filters
+        if ($limit = $request->get('limit')) {
+            $query .= ' LIMIT ' . $limit;
+        }
+
+        // Close
+        $query .= ';';
+
+        return DB::select($query);
     }
 }
