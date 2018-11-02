@@ -28,25 +28,7 @@
                 </div>
             </div>
             <div class="row__column">
-                <div class="box">
-                    <div class="box__section box__section--header">{{ __('general.recent') }} {{ __('models.spendings') }}</div>
-                    @if (count($recentSpendings))
-                        @foreach ($recentSpendings as $spending)
-                            <div class="box__section row row--seperate">
-                                <div class="row__column">
-                                    <div class="color-dark">{{ $spending->description }}</div>
-                                    <div class="mt-1" style="font-size: 14px;">{{ $spending->formatted_happened_on }}</div>
-                                </div>
-                                <div class="row__column row__column--compact row__column--middle color-dark">{!! $currency !!} {{ $spending->formatted_amount }}</div>
-                            </div>
-                        @endforeach
-                        <div class="box__section box__section--header text-right">
-                            <a href="/spendings">More <i class="far fa-arrow-right fa-xs"></i></a>
-                        </div>
-                    @else
-                        @include('partials.empty_state', ['payload' => 'spendings'])
-                    @endif
-                </div>
+                <recent-transactions></recent-transactions>
             </div>
         </div>
         <p>{{ __('calendar.months.' . $month) }} {{ date('Y') }}</p>
