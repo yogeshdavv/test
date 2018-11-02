@@ -21,18 +21,6 @@ class DashboardController extends Controller {
             ->whereRaw('MONTH(happened_on) = ?', [date('m')])
             ->sum('amount');
 
-        $recentEarnings = session('space')
-            ->earnings()
-            ->orderBy('happened_on', 'DESC')
-            ->limit(3)
-            ->get();
-
-        $recentSpendings = session('space')
-            ->spendings()
-            ->orderBy('happened_on', 'DESC')
-            ->limit(3)
-            ->get();
-
         $mostExpensiveTags = DB::select('
             SELECT
                 tags.name AS name,
@@ -54,9 +42,6 @@ class DashboardController extends Controller {
         ', [$space_id, date('m')]);
 
         return view('dashboard', [
-            'recentEarnings' => $recentEarnings,
-            'recentSpendings' => $recentSpendings,
-
             'month' => date('n'),
             'totalEarnings' => $totalEarnings,
             'totalSpendings' => $totalSpendings,
