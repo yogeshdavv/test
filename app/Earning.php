@@ -9,7 +9,7 @@ class Earning extends Model {
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-    protected $fillable = ['happened_on', 'description', 'amount'];
+    protected $fillable = ['space_id', 'happened_on', 'description', 'amount'];
     protected $visible = ['id', 'happened_on', 'description', 'amount'];
 
     // Accessors
