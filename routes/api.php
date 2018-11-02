@@ -1,5 +1,3 @@
 <?php
 
-Route::get('/test', function () {
-    return auth()->user()->id;
-});
+Route::get('/earnings', 'API\EarningController@index');
