@@ -5,6 +5,7 @@ Vue.component('datepicker', require('./components/DatePicker.vue'))
 Vue.component('barchart', require('./components/BarChart.vue'))
 Vue.component('dropdown', require('./components/Dropdown.vue'))
 Vue.component('recent-transactions', require('./components/RecentTransactions.vue'))
+Vue.component('transaction-wizard', require('./components/TransactionWizard.vue'))
 
 const app = new Vue({
     el: '#app'
