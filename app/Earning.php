@@ -9,8 +9,8 @@ class Earning extends Model {
     use SoftDeletes;
 
     protected $dates = ['deleted_at'];
-
     protected $fillable = ['happened_on', 'description', 'amount'];
+    protected $visible = ['id', 'happened_on', 'description', 'amount'];
 
     // Accessors
     public function getFormattedAmountAttribute() {
