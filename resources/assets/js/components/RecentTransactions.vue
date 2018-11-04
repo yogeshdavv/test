@@ -3,7 +3,7 @@
         <div class="box__section box__section--header">Recent Transactions</div>
         <div class="box__section row" v-for="transaction in transactions">
             <div class="row__column">{{ transaction.description }}</div>
-            <div class="row__column row__column--compact" :class="{ 'color-green': transaction._type == 'earning', 'color-red': transaction._type == 'spending' }">{{ transaction.amount }}</div>
+            <div class="row__column row__column--compact" :class="{ 'color-green': transaction._type == 'earning', 'color-red': transaction._type == 'spending' }">{{ currency}} {{ transaction.amount }}</div>
         </div>
         <div class="box__section text-center" v-show="fetching">
             <i class="fas fa-spinner-third fa-spin"></i>
@@ -13,6 +13,8 @@
 
 <script>
 export default {
+    props: ['currency'],
+
     data() {
         return {
             fetching: false,

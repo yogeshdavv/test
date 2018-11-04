@@ -10,7 +10,7 @@
                 <transaction-wizard></transaction-wizard>
             </div>
             <div class="row__column">
-                <recent-transactions></recent-transactions>
+                <recent-transactions currency="{!! $currency !!}"></recent-transactions>
             </div>
         </div>
         <p>{{ __('calendar.months.' . $month) }} {{ date('Y') }}</p>
