@@ -9,14 +9,14 @@ use Illuminate\Support\Facades\DB;
 class TransactionController extends Controller {
     public function index(Request $request) {
         $query = '
-            SELECT type, id, space_id, happened_on, description, amount
+            SELECT type, id, space_id, happened_on, description, amount, created_at
             FROM (
-                SELECT "earning" AS type, space_id, id, happened_on, description, amount FROM earnings
+                SELECT "earning" AS type, space_id, id, happened_on, description, amount, created_at FROM earnings
                 UNION ALL
-                SELECT "spending" AS type, space_id, id, happened_on, description, amount FROM spendings
+                SELECT "spending" AS type, space_id, id, happened_on, description, amount, created_at FROM spendings
             ) a
             WHERE space_id = ?
-            ORDER BY happened_on DESC
+            ORDER BY happened_on DESC, created_at DESC
         ';
 
         // Filters
