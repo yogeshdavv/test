@@ -44,10 +44,16 @@ export default {
                 happened_on: this.happened_on,
                 description: this.description,
                 amount: this.amount
-            }).then(() => {
-                this.happened_on = new Date().toISOString().slice(0, 10)
-                this.description = ''
-                this.amount = ''
+            }).then(response => {
+                const json = response.data
+
+                if (json.success) {
+                    this.$store.commit('addTransaction', Object.assign(json.earning, { type: this.type }))
+
+                    this.happened_on = new Date().toISOString().slice(0, 10)
+                    this.description = ''
+                    this.amount = ''
+                }
 
                 this.creating = false
             }).catch(() => {
