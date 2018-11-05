@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class TransactionController extends Controller {
     public function index(Request $request) {
         $query = '
-            SELECT _type, id, space_id, happened_on, description, FORMAT(amount / 100, 2) AS formatted_amount
+            SELECT _type, id, space_id, happened_on, description, amount
             FROM (
                 SELECT "earning" AS _type, space_id, id, happened_on, description, amount FROM earnings
                 UNION ALL
