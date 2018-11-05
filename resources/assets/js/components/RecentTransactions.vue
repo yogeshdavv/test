@@ -17,8 +17,13 @@ export default {
 
     data() {
         return {
-            fetching: false,
-            transactions: []
+            fetching: false
+        }
+    },
+
+    computed: {
+        transactions() {
+            return this.$store.state.transactions
         }
     },
 
@@ -28,7 +33,10 @@ export default {
 
             axios.get('/api/transactions?limit=5').then(response => {
                 this.fetching = false
-                this.transactions = response.data
+
+                response.data.forEach(transaction => {
+                    this.$store.commit('addTransaction', transaction)
+                })
             }).catch(() => {
                 this.fetching = false
             })
