@@ -10,7 +10,7 @@ class Earning extends Model {
 
     protected $dates = ['deleted_at'];
     protected $fillable = ['space_id', 'happened_on', 'description', 'amount'];
-    protected $visible = ['id', 'happened_on', 'description', 'amount'];
+    protected $visible = ['id', 'happened_on', 'description', 'amount', 'created_at'];
 
     // Accessors
     public function getFormattedAmountAttribute() {

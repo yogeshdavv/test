@@ -24,7 +24,7 @@ export default {
 
     computed: {
         transactions() {
-            return this.$store.state.transactions
+            return this.$store.getters.recentTransactions
         }
     },
 
