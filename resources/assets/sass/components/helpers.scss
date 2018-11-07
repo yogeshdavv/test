@@ -151,6 +151,10 @@
 }
 
 .color {
+    &-primary {
+        color: $colors-primary;
+    }
+
     &-blue {
         color: $colors-blue;
     }

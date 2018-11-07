@@ -1,6 +1,9 @@
 <template>
     <div class="box">
-        <div class="box__section box__section--header">Create Transaction</div>
+        <div class="box__section box__section--menu">
+            <button @click="switchType('earning')" :class="{ 'color-primary': type == 'earning' }">Earning</button>
+            <button @click="switchType('spending')" :class="{ 'color-primary': type == 'spending' }">Spending</button>
+        </div>
         <div class="box__section">
             <div class="input input-small">
                 <label>Happened On</label>
@@ -37,6 +40,10 @@ export default {
     },
 
     methods: {
+        switchType(type) {
+            this.type = type
+        },
+
         create() {
             this.creating = true
 

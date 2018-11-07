@@ -42,6 +42,37 @@
             font-size: 14px;
             font-weight: 600;
         }
+
+        &.box__section--menu {
+            padding: 0;
+            display: flex;
+
+            button {
+                padding: 15px 20px;
+                font: inherit;
+                font-size: 14px;
+                font-weight: 600;
+                background: none;
+                border: none;
+                border-right: 1px solid $colors-light-border;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                &:focus {
+                    outline: 0;
+                }
+
+                &:last-child {
+                    border-right: none;
+                }
+
+                &.active {
+                    color: $colors-primary;
+                }
+            }
+        }
     }
 
     ul.box__section {
